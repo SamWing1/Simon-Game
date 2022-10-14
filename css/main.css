@@ -2,7 +2,74 @@
     font-family: Helvetica;
 }
 h1 {
+    font-size: 70px;
     font-weight: normal;
     text-align: center;
 }
 
+.game-board {
+    display:grid;
+    justify-content: center;
+    grid-template-areas: 
+    "gsp rsp"
+    "bsp ysp" ;
+}
+
+.green-space {
+    height: 150px;
+    width: 150px;
+    border: 1px solid green;
+    background-color: green;
+    grid-area: gsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+    
+}
+
+.red-space {
+    height: 150px;
+    width: 150px;
+    border: 1px solid red;
+    background-color: red;
+    grid-area: rsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+.blue-space {
+    height: 150px;
+    width: 150px;
+    border: 1px solid blue;
+    background-color: blue;
+    grid-area: bsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+.yellow-space {
+    height: 150px;
+    width: 150px;
+    border: 1px solid yellow;
+    background-color: yellow;
+    grid-area: ysp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+.start {
+    margin: 2% 0px 2% 26%;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.level-counter {
+    text-align: center;
+    margin-right: 1rem;
+    font-size: 20px;
+}
