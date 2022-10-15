@@ -23,8 +23,7 @@ h1 {
     grid-area: gsp;
     margin: 10px;
     cursor: pointer;
-    border-radius: 15%;
-    
+    border-radius: 15%;   
 }
 
 .red-space {
@@ -72,4 +71,52 @@ h1 {
     text-align: center;
     margin-right: 1rem;
     font-size: 20px;
+}
+
+.green-space-pressed {
+    height: 145px;
+    width: 145px;
+    border: 1px solid green;
+    background-color: green;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    grid-area: gsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;   
+}
+
+.red-space-pressed {
+    height: 145px;
+    width: 145px;
+    border: 1px solid red;
+    background-color: red;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    grid-area: rsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+.blue-space-pressed {
+    height: 145px;
+    width: 145px;
+    border: 1px solid blue;
+    background-color: blue;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    grid-area: bsp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
+}
+
+.yellow-space-pressed {
+    height: 145px;
+    width: 145px;
+    border: 1px solid yellow;
+    background-color: yellow;
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    grid-area: ysp;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 15%;
 }
