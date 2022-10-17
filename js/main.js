@@ -18,13 +18,15 @@ yellow.disabled = true
 const onGreenClicked = function (event) {
     let timeout
     function resolveAfter1Second() {
-           timeout = setTimeout(function() {
-            resolve(green.classList.remove('green-space-pressed'))
-            green.disabled = false
-            red.disabled = false
-            blue.disabled = false
-            yellow.disabled = false
-          }, 1000)
+        return new Promise(function (resolve) {
+            timeout = setTimeout(function() {
+                resolve(green.classList.remove('green-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
+            }, 1000)
+        })
     }
       
       async function asyncCall() {
@@ -76,9 +78,10 @@ const greenGlow = function (event) {
 }
 
 const onRedClicked = function (event) {
+    let timeout
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
-            setTimeout(function() {
+            timeout = setTimeout(function() {
                 resolve(red.classList.remove('red-space-pressed'))
                 green.disabled = false
                 red.disabled = false
@@ -106,6 +109,10 @@ const onRedClicked = function (event) {
             red.disabled = true
             blue.disabled = true
             yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                red.classList.remove('red-space-pressed')
+            }, 1000)
         }
         return result
     }
@@ -133,9 +140,10 @@ const redGlow = function (event) {
 }
 
 const onBlueClicked = function (event) {
+    let timeout
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
-            setTimeout(function() {
+            timeout = setTimeout(function() {
                 resolve(blue.classList.remove('blue-space-pressed'))
                 green.disabled = false
                 red.disabled = false
@@ -163,6 +171,10 @@ const onBlueClicked = function (event) {
             red.disabled = true
             blue.disabled = true
             yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                blue.classList.remove('blue-space-pressed')
+            }, 1000)
         }
         return result
     }
@@ -190,9 +202,10 @@ const blueGlow = function (event) {
 }
 
 const onYellowClicked = function (event) {
+    let timeout
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
-            setTimeout(function() {
+            timeout = setTimeout(function() {
                 resolve(yellow.classList.remove('yellow-space-pressed'))
                 green.disabled = false
                 red.disabled = false
@@ -220,6 +233,10 @@ const onYellowClicked = function (event) {
             red.disabled = true
             blue.disabled = true
             yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                yellow.classList.remove('yellow-space-pressed')
+            }, 1000)
         }
         return result
     }
@@ -249,7 +266,7 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    randomIndex = 1 //debugging tool
+    randomIndex = 3 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pressResult()
