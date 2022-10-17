@@ -10,8 +10,24 @@ const onSpaceClicked = function (event) {
     console.log('clicked!')
 }
 const onGreenClicked = function (event) {
-    green.classList.add('green-space-pressed')
+    function resolveAfter1Seconds() {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(green.classList.remove('green-space-pressed'));
+          }, 1000);
+        });
+      }
+      
+      async function asyncCall() {
+        console.log(green.classList.add('green-space-pressed'));
+        const result = await resolveAfter1Seconds();
+        console.log(result);
+      }
+      
+      asyncCall();
+      
 }
+
 const onRedClicked = function (event) {
     red.classList.add('red-space-pressed')
 }

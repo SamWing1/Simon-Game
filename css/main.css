@@ -1,6 +1,7 @@
 * {
     font-family: Helvetica;
 }
+
 h1 {
     font-size: 70px;
     font-weight: normal;
@@ -8,7 +9,7 @@ h1 {
 }
 
 .game-board {
-    display:grid;
+    display: grid;
     justify-content: center;
     grid-template-areas: 
     "gsp rsp"
