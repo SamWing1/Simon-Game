@@ -10,29 +10,66 @@ const onSpaceClicked = function (event) {
     console.log('clicked!')
 }
 const onGreenClicked = function (event) {
-    function resolveAfter1Seconds() {
+    function resolveAfter1Second() {
         return new Promise(function (resolve) {
           setTimeout(function() {
-            resolve(green.classList.remove('green-space-pressed'));
-          }, 1000);
-        });
-      }
+            resolve(green.classList.remove('green-space-pressed'))
+          }, 1000)
+        })
+    }
       
       async function asyncCall() {
         green.classList.add('green-space-pressed')
-        const result = await resolveAfter1Seconds()
-      }
+        const result = await resolveAfter1Second()
+    }
     asyncCall()
 }
 
 const onRedClicked = function (event) {
-    red.classList.add('red-space-pressed')
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(red.classList.remove('red-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        red.classList.add('red-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
 }
+
 const onBlueClicked = function (event) {
-    blue.classList.add('blue-space-pressed')
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(blue.classList.remove('blue-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        blue.classList.add('blue-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
 }
 const onYellowClicked = function (event) {
-    yellow.classList.add('yellow-space-pressed')
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(yellow.classList.remove('yellow-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        yellow.classList.add('yellow-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
 }
 
 //add event listener
