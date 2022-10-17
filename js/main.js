@@ -4,6 +4,8 @@ const red = document.querySelector('#red')
 const blue = document.querySelector('#blu')
 const yellow = document.querySelector('#ylw')
 const start = document.querySelector('#start')
+const win = document.querySelector('#win')
+const loss = document.querySelector('#loss')
 const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
 let playerPress = []
@@ -60,6 +62,7 @@ const onGreenClicked = function (event) {
             setTimeout(function() {
                 green.classList.remove('green-space-pressed')
             }, 1000)
+            loss.classList.add('loss')
         }
         return result
     }
@@ -131,6 +134,7 @@ const onRedClicked = function (event) {
             setTimeout(function() {
                 red.classList.remove('red-space-pressed')
             }, 1000)
+            loss.classList.add('loss')
         }
         return result
     }
@@ -202,6 +206,7 @@ const onBlueClicked = function (event) {
             setTimeout(function() {
                 blue.classList.remove('blue-space-pressed')
             }, 1000)
+            loss.classList.add('loss')
         }
         return result
     }
@@ -273,6 +278,7 @@ const onYellowClicked = function (event) {
             setTimeout(function() {
                 yellow.classList.remove('yellow-space-pressed')
             }, 1000)
+            loss.classList.add('loss')
         }
         return result
     }
