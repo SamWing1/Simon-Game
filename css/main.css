@@ -129,3 +129,15 @@ h1 {
     cursor: pointer;
     border-radius: 15%;
 }
+
+.loss {
+
+}
+
+.win {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    background-image: url("../Images/confetti.jpeg");
+    width: 500px;
+}

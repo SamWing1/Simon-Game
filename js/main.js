@@ -16,16 +16,15 @@ yellow.disabled = true
 
 //functions
 const onGreenClicked = function (event) {
+    let timeout
     function resolveAfter1Second() {
-        return new Promise(function (resolve) {
-          setTimeout(function() {
+           timeout = setTimeout(function() {
             resolve(green.classList.remove('green-space-pressed'))
             green.disabled = false
             red.disabled = false
             blue.disabled = false
             yellow.disabled = false
           }, 1000)
-        })
     }
       
       async function asyncCall() {
@@ -42,6 +41,14 @@ const onGreenClicked = function (event) {
             console.log('correct')
         } else {
             console.log('you lose')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                green.classList.remove('green-space-pressed')
+            }, 1000)
         }
         return result
     }
@@ -95,6 +102,10 @@ const onRedClicked = function (event) {
             console.log('correct')
         } else {
             console.log('you lose')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
         }
         return result
     }
@@ -148,6 +159,10 @@ const onBlueClicked = function (event) {
             console.log('correct')
         } else {
             console.log('you lose')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
         }
         return result
     }
@@ -201,6 +216,10 @@ const onYellowClicked = function (event) {
             console.log('correct')
         } else {
             console.log('you lose')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
         }
         return result
     }
