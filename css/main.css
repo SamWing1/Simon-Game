@@ -131,13 +131,38 @@ h1 {
 }
 
 .loss {
-
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    line-height: 150px;
+    background-image: url("../Images/amoguscoffin.jpeg");
+    background-size: cover;
+    background-position: center;
+    width: 500px;
+    height: 150px;
+    z-index: 1;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
 }
 
 .win {
     font-size: 50px;
     color: white;
     text-align: center;
+    line-height: 150px;
     background-image: url("../Images/confetti.jpeg");
+    background-size: cover;
     width: 500px;
+    height: 150px;
+    z-index: 1;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: none; */
 }

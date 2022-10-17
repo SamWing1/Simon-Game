@@ -41,6 +41,15 @@ const onGreenClicked = function (event) {
         let result
         if (playerPress.join() == pattern.join()) {
             console.log('correct')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                green.classList.remove('green-space-pressed')
+            }, 1000)
+            start.disabled = false
         } else {
             console.log('you lose')
             green.disabled = true
@@ -103,6 +112,15 @@ const onRedClicked = function (event) {
         let result
         if (playerPress.join() == pattern.join()) {
             console.log('correct')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                red.classList.remove('red-space-pressed')
+            }, 1000)
+            start.disabled = false
         } else {
             console.log('you lose')
             green.disabled = true
@@ -165,6 +183,15 @@ const onBlueClicked = function (event) {
         let result
         if (playerPress.join() == pattern.join()) {
             console.log('correct')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                blue.classList.remove('blue-space-pressed')
+            }, 1000)
+            start.disabled = false
         } else {
             console.log('you lose')
             green.disabled = true
@@ -227,6 +254,15 @@ const onYellowClicked = function (event) {
         let result
         if (playerPress.join() == pattern.join()) {
             console.log('correct')
+            green.disabled = true
+            red.disabled = true
+            blue.disabled = true
+            yellow.disabled = true
+            clearTimeout(timeout)
+            setTimeout(function() {
+                yellow.classList.remove('yellow-space-pressed')
+            }, 1000)
+            start.disabled = false
         } else {
             console.log('you lose')
             green.disabled = true
@@ -263,10 +299,11 @@ const yellowGlow = function (event) {
     asyncCall()
 }
 
+//start button
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    randomIndex = 3 //debugging tool
+    // randomIndex = 0 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pressResult()
@@ -279,18 +316,10 @@ const onStartClicked = function (event) {
 //add event listener
 document.addEventListener('DOMContentLoaded', function() {
     green.addEventListener('click', onGreenClicked)
-
     red.addEventListener('click', onRedClicked)
-
-    blue.addEventListener('click', onBlueClicked)
-    
+    blue.addEventListener('click', onBlueClicked)    
     yellow.addEventListener('click', onYellowClicked)
-
     start.addEventListener('click', onStartClicked)
 })
-
-//start button
-
-//plays pattern on buttons that you have to match
 
 //level presenter
