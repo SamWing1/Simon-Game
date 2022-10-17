@@ -6,6 +6,7 @@ const yellow = document.querySelector('#ylw')
 const start = document.querySelector('#start')
 const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
+let pressResult
 let level = 1
 
 //functions
@@ -24,9 +25,22 @@ const onGreenClicked = function (event) {
       
       async function asyncCall() {
         green.classList.add('green-space-pressed')
+        // onGreenClicked.disabled = true
+        // onBlueClicked.disabled = true
         const result = await resolveAfter1Second()
     }
     asyncCall()
+
+    function checkAnswer() {
+        let result
+        if (onGreenClicked === pressResult) {
+            console.log('correct')
+        } else {
+            console.log('you lose')
+        }
+        return result
+    }
+    checkAnswer()
 }
 
 const onRedClicked = function (event) {
@@ -80,8 +94,9 @@ const onYellowClicked = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [onGreenClicked, onRedClicked, onBlueClicked, onYellowClicked]
     let randomIndex = Math.floor(Math.random() * choices.length)
+    randomIndex = 0 //debugging
     let startResult = choices[randomIndex]
-    let pressResult = pressFunctions[randomIndex]
+    pressResult = pressFunctions[randomIndex]
     pressResult()
     console.log(startResult)
     pattern.push(startResult)
