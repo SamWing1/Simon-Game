@@ -3,12 +3,16 @@ const green = document.querySelector('#grn')
 const red = document.querySelector('#red')
 const blue = document.querySelector('#blu')
 const yellow = document.querySelector('#ylw')
+const start = document.querySelector('#start')
+const choices = ['#grn', '#red', '#blu', '#ylw']
+let pattern = []
 let level = 1
 
 //functions
 const onSpaceClicked = function (event) {
     console.log('clicked!')
 }
+
 const onGreenClicked = function (event) {
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
@@ -56,6 +60,7 @@ const onBlueClicked = function (event) {
     }
     asyncCall()
 }
+
 const onYellowClicked = function (event) {
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
@@ -72,6 +77,18 @@ const onYellowClicked = function (event) {
     asyncCall()
 }
 
+const onStartClicked = function (event) {
+    const pressFunctions = [onGreenClicked, onRedClicked, onBlueClicked, onYellowClicked]
+    let randomIndex = Math.floor(Math.random() * choices.length)
+    let startResult = choices[randomIndex]
+    let pressResult = pressFunctions[randomIndex]
+    pressResult()
+    console.log(startResult)
+    pattern.push(startResult)
+    console.log(pattern)
+    start.disabled = true
+}
+
 //add event listener
 document.addEventListener('DOMContentLoaded', function() {
     green.addEventListener('click', onSpaceClicked)
@@ -85,9 +102,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     yellow.addEventListener('click', onSpaceClicked)
     yellow.addEventListener('click', onYellowClicked)
+
+    start.addEventListener('click', onStartClicked)
 })
 
 //start button
+
 //plays pattern on buttons that you have to match
 
 //level presenter
