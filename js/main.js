@@ -33,7 +33,7 @@ const onGreenClicked = function (event) {
 
     function checkAnswer() {
         let result
-        if (onGreenClicked === pressResult) {
+        if (greenGlow === pressResult) {
             console.log('correct')
         } else {
             console.log('you lose')
@@ -43,7 +43,50 @@ const onGreenClicked = function (event) {
     checkAnswer()
 }
 
+const greenGlow = function (event) {
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+          setTimeout(function() {
+            resolve(green.classList.remove('green-space-pressed'))
+          }, 1000)
+        })
+    }
+      
+      async function asyncCall() {
+        green.classList.add('green-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
+}
+
 const onRedClicked = function (event) {
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(red.classList.remove('red-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        red.classList.add('red-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
+
+    function checkAnswer() {
+        let result
+        if (redGlow === pressResult) {
+            console.log('correct')
+        } else {
+            console.log('you lose')
+        }
+        return result
+    }
+    checkAnswer()
+}
+
+const redGlow = function (event) {
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
             setTimeout(function() {
@@ -73,6 +116,33 @@ const onBlueClicked = function (event) {
         const result = await resolveAfter1Second()
     }
     asyncCall()
+
+    function checkAnswer() {
+        let result
+        if (blueGlow === pressResult) {
+            console.log('correct')
+        } else {
+            console.log('you lose')
+        }
+        return result
+    }
+    checkAnswer()
+}
+
+const blueGlow = function (event) {
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(blue.classList.remove('blue-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        blue.classList.add('blue-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
 }
 
 const onYellowClicked = function (event) {
@@ -89,12 +159,38 @@ const onYellowClicked = function (event) {
         const result = await resolveAfter1Second()
     }
     asyncCall()
+
+    function checkAnswer() {
+        let result
+        if (yellowGlow === pressResult) {
+            console.log('correct')
+        } else {
+            console.log('you lose')
+        }
+        return result
+    }
+    checkAnswer()
+}
+
+const yellowGlow = function (event) {
+    function resolveAfter1Second() {
+        return new Promise(function (resolve) {
+            setTimeout(function() {
+                resolve(yellow.classList.remove('yellow-space-pressed'))
+            }, 1000)
+        })
+    }
+
+    async function asyncCall() {
+        yellow.classList.add('yellow-space-pressed')
+        const result = await resolveAfter1Second()
+    }
+    asyncCall()
 }
 
 const onStartClicked = function (event) {
-    const pressFunctions = [onGreenClicked, onRedClicked, onBlueClicked, onYellowClicked]
+    const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    randomIndex = 0 //debugging
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pressResult()
