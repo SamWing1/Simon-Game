@@ -6,34 +6,39 @@ const yellow = document.querySelector('#ylw')
 const start = document.querySelector('#start')
 const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
-let pressResult
+let playerPress = []
+let startResult
 let level = 1
+green.disabled = true
+red.disabled = true
+blue.disabled = true
+yellow.disabled = true
 
 //functions
-const onSpaceClicked = function (event) {
-    console.log('clicked!')
-}
-
 const onGreenClicked = function (event) {
     function resolveAfter1Second() {
         return new Promise(function (resolve) {
           setTimeout(function() {
             resolve(green.classList.remove('green-space-pressed'))
+            green.disabled = false
+            red.disabled = false
+            blue.disabled = false
+            yellow.disabled = false
           }, 1000)
         })
     }
       
       async function asyncCall() {
         green.classList.add('green-space-pressed')
-        // onGreenClicked.disabled = true
-        // onBlueClicked.disabled = true
         const result = await resolveAfter1Second()
     }
     asyncCall()
 
+    playerPress.push('#grn')
+
     function checkAnswer() {
         let result
-        if (greenGlow === pressResult) {
+        if (playerPress.join() == pattern.join()) {
             console.log('correct')
         } else {
             console.log('you lose')
@@ -48,6 +53,10 @@ const greenGlow = function (event) {
         return new Promise(function (resolve) {
           setTimeout(function() {
             resolve(green.classList.remove('green-space-pressed'))
+            green.disabled = false
+            red.disabled = false
+            blue.disabled = false
+            yellow.disabled = false
           }, 1000)
         })
     }
@@ -64,6 +73,10 @@ const onRedClicked = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(red.classList.remove('red-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -74,9 +87,11 @@ const onRedClicked = function (event) {
     }
     asyncCall()
 
+    playerPress.push('#red')
+
     function checkAnswer() {
         let result
-        if (redGlow === pressResult) {
+        if (playerPress.join() == pattern.join()) {
             console.log('correct')
         } else {
             console.log('you lose')
@@ -91,6 +106,10 @@ const redGlow = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(red.classList.remove('red-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -107,6 +126,10 @@ const onBlueClicked = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(blue.classList.remove('blue-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -117,9 +140,11 @@ const onBlueClicked = function (event) {
     }
     asyncCall()
 
+    playerPress.push('#blu')
+
     function checkAnswer() {
         let result
-        if (blueGlow === pressResult) {
+        if (playerPress.join() == pattern.join()) {
             console.log('correct')
         } else {
             console.log('you lose')
@@ -134,6 +159,10 @@ const blueGlow = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(blue.classList.remove('blue-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -150,6 +179,10 @@ const onYellowClicked = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(yellow.classList.remove('yellow-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -160,9 +193,11 @@ const onYellowClicked = function (event) {
     }
     asyncCall()
 
+    playerPress.push('#ylw')
+
     function checkAnswer() {
         let result
-        if (yellowGlow === pressResult) {
+        if (playerPress.join() == pattern.join()) {
             console.log('correct')
         } else {
             console.log('you lose')
@@ -177,6 +212,10 @@ const yellowGlow = function (event) {
         return new Promise(function (resolve) {
             setTimeout(function() {
                 resolve(yellow.classList.remove('yellow-space-pressed'))
+                green.disabled = false
+                red.disabled = false
+                blue.disabled = false
+                yellow.disabled = false
             }, 1000)
         })
     }
@@ -191,6 +230,7 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
+    randomIndex = 1 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pressResult()
@@ -202,16 +242,12 @@ const onStartClicked = function (event) {
 
 //add event listener
 document.addEventListener('DOMContentLoaded', function() {
-    green.addEventListener('click', onSpaceClicked)
     green.addEventListener('click', onGreenClicked)
 
-    red.addEventListener('click', onSpaceClicked)
     red.addEventListener('click', onRedClicked)
 
-    blue.addEventListener('click', onSpaceClicked)
     blue.addEventListener('click', onBlueClicked)
     
-    yellow.addEventListener('click', onSpaceClicked)
     yellow.addEventListener('click', onYellowClicked)
 
     start.addEventListener('click', onStartClicked)
