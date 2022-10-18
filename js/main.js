@@ -6,6 +6,7 @@ const yellow = document.querySelector('#ylw')
 const start = document.querySelector('#start')
 const win = document.querySelector('#win')
 const loss = document.querySelector('#loss')
+const levelCounter = document.querySelector('#LC')
 const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
 let playerPress = []
@@ -64,6 +65,7 @@ const onGreenClicked = function (event) {
             start.disabled = false
             playerPress.length = 0
             n = -1
+            level++
         } else {
             console.log('you lose')
             green.disabled = true
@@ -75,6 +77,7 @@ const onGreenClicked = function (event) {
                 green.classList.remove('green-space-pressed')
             }, 1000)
             loss.classList.add('loss')
+
         }
         return result
     }
@@ -348,7 +351,7 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    // randomIndex = 1 //debugging tool
+    randomIndex = 0 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pattern.push(pressResult)
@@ -380,3 +383,4 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 //level presenter
+levelCounter.insertAdjacentText('beforeend', level);
