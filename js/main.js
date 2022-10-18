@@ -9,6 +9,7 @@ const loss = document.querySelector('#loss')
 const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
 let playerPress = []
+let answer = []
 let startResult
 let n = -1
 let level = 1
@@ -39,7 +40,7 @@ const onGreenClicked = function (event) {
     asyncCall()
 
     playerPress.push(greenGlow)
-    n = n++
+    n++
 
 
     function checkAnswer() {
@@ -121,11 +122,17 @@ const onRedClicked = function (event) {
     asyncCall()
 
     playerPress.push(redGlow)
-    n = n++
+    n++
 
     function checkAnswer() {
         let result
-        if (playerPress[n] == pattern[n]) {
+        if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
+            console.log('keep going')
+            clearTimeout(timeout)
+            setTimeout(function() {
+                red.classList.remove('red-space-pressed')
+            }, 1000)
+        } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -196,11 +203,17 @@ const onBlueClicked = function (event) {
     asyncCall()
 
     playerPress.push(blueGlow)
-    n = n++
+    n++
 
     function checkAnswer() {
         let result
-        if (playerPress[n] == pattern[n]) {
+        if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
+            console.log('keep going')
+            clearTimeout(timeout)
+            setTimeout(function() {
+                blue.classList.remove('blue-space-pressed')
+            }, 1000)
+        } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -271,13 +284,19 @@ const onYellowClicked = function (event) {
     asyncCall()
 
     playerPress.push(yellowGlow)
-    n = n++
+    n++
 
     function checkAnswer() {
         let result
-        if (playerPress[n] == pattern[n]) {
+        if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
+            console.log('keep going')
+            clearTimeout(timeout)
+            setTimeout(function() {
+                yellow.classList.remove('yellow-space-pressed')
+            }, 1000)
+        } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
             console.log('correct')
-            green.disabled = true
+            yellow.disabled = true
             red.disabled = true
             blue.disabled = true
             yellow.disabled = true
@@ -290,7 +309,7 @@ const onYellowClicked = function (event) {
             n = -1
         } else {
             console.log('you lose')
-            green.disabled = true
+            yellow.disabled = true
             red.disabled = true
             blue.disabled = true
             yellow.disabled = true
@@ -329,10 +348,11 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    randomIndex = 0 //debugging tool
+    // randomIndex = 1 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pattern.push(pressResult)
+    answer.push(startResult)
     function runStart() {
         for (let i = 0; i < pattern.length; i++) {
         //need to add setTimeout 1000[i]
