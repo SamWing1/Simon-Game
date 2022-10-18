@@ -10,6 +10,7 @@ const choices = ['#grn', '#red', '#blu', '#ylw']
 let pattern = []
 let playerPress = []
 let startResult
+let n = -1
 let level = 1
 green.disabled = true
 red.disabled = true
@@ -38,10 +39,18 @@ const onGreenClicked = function (event) {
     asyncCall()
 
     playerPress.push(greenGlow)
+    n = n++
+
 
     function checkAnswer() {
         let result
-        if (playerPress.join() == pattern.join()) {
+        if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
+            console.log('keep going')
+            clearTimeout(timeout)
+            setTimeout(function() {
+                green.classList.remove('green-space-pressed')
+            }, 1000)
+        } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -52,6 +61,8 @@ const onGreenClicked = function (event) {
                 green.classList.remove('green-space-pressed')
             }, 1000)
             start.disabled = false
+            playerPress.length = 0
+            n = -1
         } else {
             console.log('you lose')
             green.disabled = true
@@ -110,10 +121,11 @@ const onRedClicked = function (event) {
     asyncCall()
 
     playerPress.push(redGlow)
+    n = n++
 
     function checkAnswer() {
         let result
-        if (playerPress.join() == pattern.join()) {
+        if (playerPress[n] == pattern[n]) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -124,6 +136,8 @@ const onRedClicked = function (event) {
                 red.classList.remove('red-space-pressed')
             }, 1000)
             start.disabled = false
+            playerPress.length = 0
+            n = -1
         } else {
             console.log('you lose')
             green.disabled = true
@@ -182,10 +196,11 @@ const onBlueClicked = function (event) {
     asyncCall()
 
     playerPress.push(blueGlow)
+    n = n++
 
     function checkAnswer() {
         let result
-        if (playerPress.join() == pattern.join()) {
+        if (playerPress[n] == pattern[n]) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -196,6 +211,8 @@ const onBlueClicked = function (event) {
                 blue.classList.remove('blue-space-pressed')
             }, 1000)
             start.disabled = false
+            playerPress.length = 0
+            n = -1
         } else {
             console.log('you lose')
             green.disabled = true
@@ -254,10 +271,11 @@ const onYellowClicked = function (event) {
     asyncCall()
 
     playerPress.push(yellowGlow)
+    n = n++
 
     function checkAnswer() {
         let result
-        if (playerPress.join() == pattern.join()) {
+        if (playerPress[n] == pattern[n]) {
             console.log('correct')
             green.disabled = true
             red.disabled = true
@@ -268,6 +286,8 @@ const onYellowClicked = function (event) {
                 yellow.classList.remove('yellow-space-pressed')
             }, 1000)
             start.disabled = false
+            playerPress.length = 0
+            n = -1
         } else {
             console.log('you lose')
             green.disabled = true
