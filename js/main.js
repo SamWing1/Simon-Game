@@ -37,7 +37,7 @@ const onGreenClicked = function (event) {
     }
     asyncCall()
 
-    playerPress.push('#grn')
+    playerPress.push(greenGlow)
 
     function checkAnswer() {
         let result
@@ -109,7 +109,7 @@ const onRedClicked = function (event) {
     }
     asyncCall()
 
-    playerPress.push('#red')
+    playerPress.push(redGlow)
 
     function checkAnswer() {
         let result
@@ -181,7 +181,7 @@ const onBlueClicked = function (event) {
     }
     asyncCall()
 
-    playerPress.push('#blu')
+    playerPress.push(blueGlow)
 
     function checkAnswer() {
         let result
@@ -253,7 +253,7 @@ const onYellowClicked = function (event) {
     }
     asyncCall()
 
-    playerPress.push('#ylw')
+    playerPress.push(yellowGlow)
 
     function checkAnswer() {
         let result
@@ -309,12 +309,23 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    // randomIndex = 0 //debugging tool
+    randomIndex = 0 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
-    pressResult()
+    pattern.push(pressResult)
+    function runStart() {
+        for (let i = 0; i < pattern.length; i++) {
+        //need to add setTimeout 1000[i]
+        setTimeout(function() {
+        pressResult = pattern[i]
+        console.log(pattern[i])
+        pressResult()
+            }, 1200*i)
+        }
+    }
+    runStart()
+    // pressResult()
     console.log(startResult)
-    pattern.push(startResult)
     console.log(pattern)
     start.disabled = true
 }
