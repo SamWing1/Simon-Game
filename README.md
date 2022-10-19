@@ -12,7 +12,7 @@ it was a basic memory game made in response to the percieved poor presentation o
 
 game made using HTML, CSS, and Javascript
 
-
+https://samwing1.github.io/Simon-Game/
 this version of simon plays like normal, except that you have to press the start button to start the game, and each subsequent level
 
 for future improvements I'd like to add sounds to the buttons and win/ loss screens, as well as make it scale down for mobile screens properly
