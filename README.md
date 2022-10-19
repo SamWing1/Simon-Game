@@ -15,4 +15,4 @@ game made using HTML, CSS, and Javascript
 
 this version of simon plays like normal, except that you have to press the start button to start the game, and each subsequent level
 
-for future improvements I'd like to add sounds to the buttons, and make it scale down for mobile screens properly
+for future improvements I'd like to add sounds to the buttons and win/ loss screens, as well as make it scale down for mobile screens properly
