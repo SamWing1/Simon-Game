@@ -47,13 +47,11 @@ const onGreenClicked = function (event) {
     function checkAnswer() {
         let result
         if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
-            console.log('keep going')
             clearTimeout(timeout)
             setTimeout(function() {
                 green.classList.remove('green-space-pressed')
             }, 1000)
         } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
-            console.log('correct')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -66,8 +64,13 @@ const onGreenClicked = function (event) {
             playerPress.length = 0
             n = -1
             level++
+            levelCounter.innerText = 'Level: '
+            levelCounter.insertAdjacentText('beforeend', level)
+            if (level == 5) {
+                win.classList.add('win')
+                start.disabled = true
+            }
         } else {
-            console.log('you lose')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -130,13 +133,11 @@ const onRedClicked = function (event) {
     function checkAnswer() {
         let result
         if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
-            console.log('keep going')
             clearTimeout(timeout)
             setTimeout(function() {
                 red.classList.remove('red-space-pressed')
             }, 1000)
         } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
-            console.log('correct')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -148,8 +149,14 @@ const onRedClicked = function (event) {
             start.disabled = false
             playerPress.length = 0
             n = -1
+            level++
+            levelCounter.innerText = 'Level: '
+            levelCounter.insertAdjacentText('beforeend', level)
+            if (level == 5) {
+                win.classList.add('win')
+                start.disabled = true
+            }
         } else {
-            console.log('you lose')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -211,13 +218,11 @@ const onBlueClicked = function (event) {
     function checkAnswer() {
         let result
         if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
-            console.log('keep going')
             clearTimeout(timeout)
             setTimeout(function() {
                 blue.classList.remove('blue-space-pressed')
             }, 1000)
         } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
-            console.log('correct')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -229,8 +234,14 @@ const onBlueClicked = function (event) {
             start.disabled = false
             playerPress.length = 0
             n = -1
+            level++
+            levelCounter.innerText = 'Level: '
+            levelCounter.insertAdjacentText('beforeend', level)
+            if (level == 5) {
+                win.classList.add('win')
+                start.disabled = true
+            }
         } else {
-            console.log('you lose')
             green.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -292,13 +303,11 @@ const onYellowClicked = function (event) {
     function checkAnswer() {
         let result
         if (playerPress[n] == pattern[n] && playerPress.length < pattern.length) {
-            console.log('keep going')
             clearTimeout(timeout)
             setTimeout(function() {
                 yellow.classList.remove('yellow-space-pressed')
             }, 1000)
         } else if (playerPress[n] == pattern[n] && playerPress.length == pattern.length) {
-            console.log('correct')
             yellow.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -310,8 +319,14 @@ const onYellowClicked = function (event) {
             start.disabled = false
             playerPress.length = 0
             n = -1
+            level++
+            levelCounter.innerText = 'Level: '
+            levelCounter.insertAdjacentText('beforeend', level)
+            if (level == 5) {
+                win.classList.add('win')
+                start.disabled = true
+            }
         } else {
-            console.log('you lose')
             yellow.disabled = true
             red.disabled = true
             blue.disabled = true
@@ -351,25 +366,19 @@ const yellowGlow = function (event) {
 const onStartClicked = function (event) {
     const pressFunctions = [greenGlow, redGlow, blueGlow, yellowGlow]
     let randomIndex = Math.floor(Math.random() * choices.length)
-    randomIndex = 0 //debugging tool
     let startResult = choices[randomIndex]
     pressResult = pressFunctions[randomIndex]
     pattern.push(pressResult)
     answer.push(startResult)
     function runStart() {
         for (let i = 0; i < pattern.length; i++) {
-        //need to add setTimeout 1000[i]
         setTimeout(function() {
         pressResult = pattern[i]
-        console.log(pattern[i])
         pressResult()
             }, 1200*i)
         }
     }
     runStart()
-    // pressResult()
-    console.log(startResult)
-    console.log(pattern)
     start.disabled = true
 }
 
@@ -383,4 +392,4 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 //level presenter
-levelCounter.insertAdjacentText('beforeend', level);
+levelCounter.insertAdjacentText('beforeend', level)
