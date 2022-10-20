@@ -2,13 +2,13 @@ Simon
 released 1978 under the name "Follow Me"
 it was a basic memory game made in response to the percieved poor presentation of the Atari at a trade show in 1976
 
-![base game](Images/game base.png)
+![base game](./Images/game%20base.png)
 
-![in action](Images/in action.png)
+![in action](./Images/in%20action.png)
 
-![lose screen](Images/lose screen.png)
+![lose screen](./Images/lose%20screen.png)
 
-![win screen](Images/win screen.png)
+![win screen](./Images/win%20screen.png)
 
 game made using HTML, CSS, and Javascript
 
