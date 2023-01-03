@@ -66,10 +66,7 @@ const onGreenClicked = function (event) {
             level++
             levelCounter.innerText = 'Level: '
             levelCounter.insertAdjacentText('beforeend', level)
-            if (level == 5) {
-                win.classList.add('win')
-                start.disabled = true
-            }
+            
         } else {
             green.disabled = true
             red.disabled = true
@@ -152,10 +149,7 @@ const onRedClicked = function (event) {
             level++
             levelCounter.innerText = 'Level: '
             levelCounter.insertAdjacentText('beforeend', level)
-            if (level == 5) {
-                win.classList.add('win')
-                start.disabled = true
-            }
+            
         } else {
             green.disabled = true
             red.disabled = true
@@ -237,10 +231,7 @@ const onBlueClicked = function (event) {
             level++
             levelCounter.innerText = 'Level: '
             levelCounter.insertAdjacentText('beforeend', level)
-            if (level == 5) {
-                win.classList.add('win')
-                start.disabled = true
-            }
+            
         } else {
             green.disabled = true
             red.disabled = true
@@ -322,10 +313,7 @@ const onYellowClicked = function (event) {
             level++
             levelCounter.innerText = 'Level: '
             levelCounter.insertAdjacentText('beforeend', level)
-            if (level == 5) {
-                win.classList.add('win')
-                start.disabled = true
-            }
+            
         } else {
             yellow.disabled = true
             red.disabled = true
