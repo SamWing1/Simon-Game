@@ -9,13 +9,18 @@
 </head>
 <body>
     <h1>Simon</h1>
+    <div>
     <section class="game-board">
         <button class="green-space" id="grn"></button>
         <button class="red-space" id="red"></button>
         <button class="blue-space" id="blu"></button>
         <button class="yellow-space" id="ylw"></button>
+        <div class="null">null</div>
+        <div class="explan-text" id="txt">Press the start button in the bottom left to get started! After finishing each level you'll need to press the start button again to play the next level's pattern</div>
     </section>
+    </div>
     <button class="start" id="start">Start!</button>
+    <button class="start" onClick="window.location.reload();">Restart Game</button>
     <div class="level-counter" id="LC">Level: </div>
     <div class="" id="win">Nice Job!</div>
     <div class="" id="loss">You lose ;(</div>
